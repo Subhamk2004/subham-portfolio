@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        'dark-bg': 'rgba(3, 3, 15, 1)',
+                        'navbar-bg': 'rgb(29, 29, 44)',
+                        'navbar-border': 'rgb(12, 12, 34)',
+                        'accent-green': 'rgb(185, 255, 22)',
+                        'blue-accent': 'rgb(47, 196, 255)',
+                        'skills-bg': 'rgb(53, 58, 66)',
+                        'content-bg': 'rgba(79, 79, 90, 0.541)',
+                        'about-content-bg': 'rgba(131, 131, 139, 0.356)',
+                        'outer-box-bg': 'rgba(29, 29, 41, 0.151)',
+                    },
+                    animation: {
+                        'bounce-custom': 'bounce-custom 0.5s alternate infinite ease',
+                        'bounce-linear': 'bounce-linear 1s alternate infinite linear',
+                        'wobble': 'wobble 0.7s alternate infinite ease-in-out',
+                        'wave': 'wave 0.5s linear infinite alternate',
+                        'flash': 'flash 0.5s linear infinite alternate',
+                    },
+                    keyframes: {
+                        'bounce-custom': {
+                            'from': { transform: 'translateY(10px)' },
+                            'to': { transform: 'translateY(-10px)', opacity: '0.2' },
+                        },
+                        'bounce-linear': {
+                            'from': { transform: 'translateY(10px)' },
+                            'to': { transform: 'translateY(-10px)', opacity: '0.2' },
+                        },
+                        'wobble': {
+                            'from': { transform: 'scale(50%)' },
+                            'to': { transform: 'scale(100%) translateY(-10px)', opacity: '0.2' },
+                        },
+                        'wave': {
+                            'to': { transform: 'rotate(45deg)' },
+                        },
+                        'flash': {
+                            'to': { width: '20px', height: '20px' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        *::-webkit-scrollbar {
+            display: none;
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+        }
+
+        .text-stroke {
+            -webkit-text-stroke: 2px rgb(232, 221, 241);
+            color: rgb(24, 15, 41);
+        }
+
+        .about-content-expand:hover {
+            height: 30vh;
+            color: rgb(185, 255, 22);
+            font-size: min(2vw, 25px);
+            font-weight: 500;
+            border-radius: 25px;
+        }
+
+        .about-content-expand:hover .about-imgs {
+            visibility: visible;
+            height: auto;
+            width: min(10vw, 50px);
+            margin-top: 10px;
+            opacity: 1;
+        }
+
+        .about-content-expand:hover .about-content-para {
+            visibility: visible;
+            height: auto;
+            width: 95%;
+            color: aliceblue;
+            font-size: min(1.5vw, 17px);
+            margin-top: 10px;
+            text-align: justify;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            opacity: 1;
+        }
+
+        .about-content-expand:hover .dropdown {
+            display: none;
+        }
+
+        .project-hover:hover {
+            box-shadow: 0 0 5pc greenyellow;
+            border-radius: 20px;
+        }
+
+        .project-hover:hover .popup {
+            transform: translateY(50px);
+            width: 130%;
+            height: auto;
+            color: rgb(255, 255, 255);
+        }
+
+        .project-hover:hover .popup p {
+            height: auto;
+            visibility: visible;
+            opacity: 1;
+            font-weight: 500;
+            text-align: justify;
+            width: 95%;
+            color: aliceblue;
+            font-size: min(1.8vw, 20px);
+            padding-bottom: 5px;
+        }
+
+        .project-hover:hover .project_img_box {
+            border-radius: 20px;
+        }
+
+        .project-card {
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card img {
+            transition: transform 0.5s ease;
+        }
+
+        .project-card .bg-gradient-to-t {
+            background: linear-gradient(to top, rgba(3, 3, 15, 0.9) 0%, transparent 100%);
+        }
+
+        .project-card:hover .bg-gradient-to-t {
+            opacity: 1;
+        }
+
+        @media screen and (max-width: 500px) {
+            .text-stroke {
+                -webkit-text-stroke: 1px rgb(232, 221, 241);
+            }
+
+            .project-hover:hover {
+                box-shadow: 0 0 35px greenyellow;
+            }
+
+            .project-hover:hover .popup {
+                transform: translateY(50px);
+                width: 120%;
+                font-weight: 600;
+                background: linear-gradient(40deg, rgba(131, 173, 68, 0.911), rgb(73, 73, 92));
+            }
+
+            .project-hover:hover .popup p {
+                font-size: 13px;
+                font-weight: 400;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-dark-bg flex flex-col items-center font-poppins m-0 p-0">
+
+    <!-- Navbar -->
+    <nav
+        class="w-[min(80%,1300px)] h-[50px] rounded-[80px] bg-navbar-bg mt-7 flex justify-center items-center shadow-[0_0_0_1px_rgb(12,12,34)] transition-all duration-400 ease fixed z-[1000]">
+        <div
+            class="w-[31%] flex items-center justify-center gap-[10%] text-accent-green text-[min(2.4vw,28px)] font-bold cursor-pointer">
+            <a href="#about"
+                class="text-white font-light text-[min(1.8vw,20px)] transition-all duration-800 ease no-underline">
+                About
+            </a>
+            <a href="#skills"
+                class="text-white font-light text-[min(1.8vw,20px)] transition-all duration-800 ease no-underline">
+                Skills
+            </a>
+        </div>
+        <a href="#"
+            class="w-[31%] flex items-center justify-center gap-[10%] text-accent-green text-[min(2.4vw,28px)] font-bold cursor-pointer no-underline">
+            HOME
+        </a>
+        <div
+            class="w-[31%] flex items-center justify-center gap-[10%] text-accent-green text-[min(2.4vw,28px)] font-bold cursor-pointer">
+            <a href="#projects"
+                class="text-white font-light text-[min(1.8vw,20px)] transition-all duration-800 ease no-underline">
+                Projects
+            </a>
+            <a href="#contact"
+                class="text-white font-light text-[min(1.8vw,20px)] transition-all duration-800 ease no-underline">
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="w-full mt-10">
+
+        <!-- Landing Page -->
+        <div class="w-full relative flex justify-center items-center" id="home">
+            <div class="w-1/2 mt-[100px] flex justify-center items-center overflow-hidden">
+                <div
+                    class="flex justify-center items-center w-[min(65vh,700px)] h-[min(65vh,700px)] rounded-full ml-[-50vw] border border-[rgba(66,65,70,0.61)] shadow-[1px_1px_10px_rgba(128,126,126,0.459)] bg-gradient-to-r from-gray-400/60 to-gray-900/10">
+                    <i
+                        class="fas fa-laptop-code absolute top-[53vh] left-[23vh] text-[30px] text-blue-accent animate-bounce-custom"></i>
+                    <i
+                        class="fab fa-bootstrap absolute top-[30vh] left-[10vh] text-[30px] text-purple-400 animate-bounce-linear"></i>
+                    <i
+                        class="fab fa-python absolute top-[70vh] left-[10vh] text-[30px] text-yellow-400 animate-wobble"></i>
+                    <i class="fab fa-android absolute top-[30vh] left-[40vh] text-[30px] text-green-400 opacity-70"></i>
+                </div>
+            </div>
+
+            <!-- Main Content Card -->
+            <div class="w-[max(650px,65vw)] absolute flex justify-center items-center mt-[100px] h-[min(62vh,800px)]">
+                <div class="absolute z-10 w-[99.5%] h-[99.5%] overflow-hidden rounded-[20px] blur-[2px] ">
+                    <div
+                        class="w-full h-full bg-gradient-to-r from-purple-900/30 to-blue-900/30 flex justify-center items-center">
+                        <div class="bg_box w-[99.5%] h-[99.5%] rounded-[20px] relative overflow-hidden">
+                            <img id="background-image"
+                                src="https://res.cloudinary.com/dpazarvil/image/upload/v1749976572/assets/m3xfzphyturclfyifspu.jpg"
+                                alt="" class="bg_img w-full h-full ">
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full h-full flex bg-content-bg rounded-[20px] z-[100]">
+                    <div
+                        class="flex flex-col items-center justify-center ml-5 text-[min(1.5vw,30px)] w-[60%] gap-3 lg:gap-4">
+                        <div class="text-accent-green flex items-center gap-[10px] mt-1">
+                            <h1 class="text-3xl font-bold lg:text-5xl">Hello</h1>
+                            <i class="fa-solid fa-hand text-[25px] animate-wave text-white"></i>
+                        </div>
+                        <h1 id="username" class="text-white text-2xl font-bold lg:text-5xl">Your Name</h1>
+                        <h1 id="profession" class="text-stroke text-[33px]">Your Profession</h1>
+                        <div class="flex gap-[15px] w-full justify-center mt-10">
+                            <a id="resume-link" download="Resume" href="#">
+                                <button
+                                    class="h-[min(6vw,60px)] w-[min(10vw,160px)] rounded-[40px] bg-accent-green text-[17px] font-medium transition-all duration-500 ease hover:cursor-pointer hover:h-[47px] hover:w-[110px] hover:border-[5px] hover:border-double hover:border-gray-600">Resume</button>
+                            </a>
+                            <a id="linkedin-link" href="#">
+                                <button
+                                    class="h-[min(6vw,60px)] w-[min(10vw,160px)] rounded-[40px] bg-blue-600 text-[17px] font-medium transition-all duration-500 ease hover:cursor-pointer hover:h-[47px] hover:w-[110px] hover:border-[5px] hover:border-double hover:border-gray-600 text-white">LinkedIn</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="w-[40%] flex flex-col items-center justify-center py-7 h-full">
+                        <img id="profile-image" src="" alt="Profile Image"
+                            class="w-[max(370px,22vw)] h-[max(370px,22vw)] rounded-3xl flex items-center justify-center object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-1/2 mt-[100px] flex justify-center items-center overflow-hidden">
+                <div
+                    class="w-[min(65vh,700px)] h-[min(65vh,700px)] rounded-full mr-[-50vw] border border-[rgba(66,65,70,0.61)] shadow-[1px_1px_10px_rgba(128,126,126,0.459)] bg-gradient-to-r from-gray-900/10 to-gray-400/60">
+                    <i
+                        class="fab fa-js-square absolute top-[53vh] right-[23vh] text-[30px] text-yellow-400 animate-wobble"></i>
+                    <i
+                        class="fab fa-react absolute top-[30vh] right-[10vh] text-[30px] text-blue-400 animate-bounce-custom"></i>
+                    <i
+                        class="fab fa-github absolute top-[70vh] right-[10vh] text-[30px] text-white animate-bounce-linear"></i>
+                    <i class="fas fa-code absolute top-[25vh] right-[70vh] text-[30px] text-green-400 opacity-50"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Line Break -->
+        <div class="flex justify-center items-center w-full mt-[130px] gap-[15px]" id="about">
+            <hr class="w-[40%] h-[1px] bg-white border-0">
+            <div class="w-10 h-[60px] flex justify-center items-center text-white border border-white rounded-[20px]">
+                |
+            </div>
+            <hr class="w-[40%] h-[1px] bg-white border-0">
+        </div>
+
+        <!-- About Section -->
+        <div class="flex flex-col items-center">
+            <h1 class="text-white mt-5 text-3xl font-bold">About Myself</h1>
+            <p id="about-description"
+                class="text-white w-[min(80%,1200px)] text-[min(1.6vw,22px)] mt-[10px] text-justify tracking-[1px] leading-[min(2.3vw,35px)]">
+                Your about description goes here.
+            </p>
+
+            <!-- About Content Boxes -->
+            <div id="about-boxes-container">
+                <!-- About boxes will be injected here by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Line Break -->
+        <div class="flex justify-center items-center w-full mt-[130px] gap-[15px]" id="skills">
+            <hr class="w-[40%] h-[1px] bg-white border-0">
+            <div class="w-10 h-[60px] flex justify-center items-center text-white border border-white rounded-[20px]">
+                |
+            </div>
+            <hr class="w-[40%] h-[1px] bg-white border-0">
+        </div>
+
+        <!-- Skills Section -->
+        <div class="text-white flex flex-col items-center gap-5 mt-5 w-full">
+            <h1 class="text-3xl font-bold">My Skills</h1>
+            <div
+                class="w-[min(80%,1200px)] bg-skills-bg flex flex-col justify-center rounded-[20px] items-center mb-5 pb-5">
+                <p id="skills-description"
+                    class="text-justify tracking-[1px] w-[min(95%,1200px)] leading-[min(2.3vw,35px)] text-[min(1.6vw,22px)] mt-5 mb-5">
+                    Your skills description goes here.
+                </p>
+                <hr class="w-[95%] h-[1.5px] bg-accent-green border-0">
+
+                <!-- Languages -->
+                <div class="flex flex-col w-full items-center mt-7 mb-7">
+                    <h2 class="text-2xl mb-4 lg:font-semibold lg:mt-5 lg:mb-5 lg:text-3xl">Languages</h2>
+                    <div id="languages-container"
+                        class="flex flex-wrap justify-center w-[90%] items-center gap-5 lg:gap-12">
+                        <!-- Languages will be injected here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Front-end -->
+                <div class="flex flex-col w-full items-center mt-7 mb-7">
+                    <h2 class="text-2xl mb-4 lg:font-semibold lg:mt-5 lg:mb-5 lg:text-3xl">Front-end</h2>
+                    <div id="frontend-container"
+                        class="flex flex-wrap justify-center w-[90%] items-center gap-5  lg:gap-12">
+                        <!-- Front-end skills will be injected here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="flex flex-col w-full items-center mt-7 mb-7">
+                    <h2 class="text-2xl mb-4 lg:font-semibold lg:mt-5 lg:mb-5 lg:text-3xl">Backend</h2>
+                    <div id="backend-container"
+                        class="flex flex-wrap justify-center w-[90%] items-center gap-5  lg:gap-12">
+                        <!-- Backend skills will be injected here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Developer Tools -->
+                <div class="flex flex-col w-full items-center mt-7 mb-7">
+                    <h2 class="text-2xl mb-4 lg:font-semibold lg:mt-5 lg:mb-5 lg:text-3xl">Developer Tools</h2>
+                    <div id="tools-container"
+                        class="flex flex-wrap justify-center w-[90%] items-center gap-5  lg:gap-12">
+                        <!-- Tools will be injected here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Line Break -->
+        <div class="flex justify-center items-center w-full mt-[130px] gap-[15px]" id="experience">
+            <hr class="w-[40%] h-[1px] bg-white border-0">
+            <div class="w-10 h-[60px] flex justify-center items-center text-white border border-white rounded-[20px]">
+                |
+            </div>
+            <hr class="w-[40%] h-[1px] bg-white border-0">
+        </div>
+
+        <!-- Experience Section -->
+        <div class="text-white flex flex-col items-center gap-5 mt-5 w-full">
+            <h1 class="text-3xl font-bold">My Experience</h1>
+            <div class="w-[min(80%,1200px)] flex flex-col justify-center rounded-[20px] items-center mb-5 pb-5">
+                <div id="experience-container" class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mt-5">
+                    <!-- Experience items will be injected here by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Line Break -->
+        <div class="flex justify-center items-center w-full mt-[130px] gap-[15px]" id="projects">
+            <hr class="w-[40%] h-[1px] bg-white border-0">
+            <div class="w-10 h-[60px] flex justify-center items-center text-white border border-white rounded-[20px]">
+                |
+            </div>
+            <hr class="w-[40%] h-[1px] bg-white border-0">
+        </div>
+
+        <!-- Projects Section -->
+        <div class="text-white flex flex-col items-center mt-5 mb-[200px] w-full">
+            <h1 class="text-3xl font-bold mb-10">My Projects</h1>
+            <div id="projects-container"
+                class="w-[min(90%,1500px)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+                <!-- Projects will be injected here by JavaScript -->
+            </div>
+        </div>
+
+
+        <!-- Line Break -->
+        <div class="flex justify-center items-center w-full mt-[130px] gap-[15px]" id="achievements">
+            <hr class="w-[40%] h-[1px] bg-white border-0">
+            <div class="w-10 h-[60px] flex justify-center items-center text-white border border-white rounded-[20px]">
+                |
+            </div>
+            <hr class="w-[40%] h-[1px] bg-white border-0">
+        </div>
+
+        <!-- Achievements Section -->
+        <div class="text-white flex flex-col items-center gap-5 mt-5 w-full">
+            <h1 class="text-3xl font-bold">My Achievements</h1>
+            <div class="w-[min(80%,1200px)] flex flex-col justify-center rounded-[20px] items-center mb-5 pb-5">
+                <div id="achievements-container"
+                    class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-5">
+                    <!-- Achievement items will be injected here by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Line Break -->
+        <div class="flex justify-center items-center w-full mt-[130px] gap-[15px]" id="contact">
+            <hr class="w-[40%] h-[1px] bg-white border-0">
+            <div class="w-10 h-[60px] flex justify-center items-center text-white border border-white rounded-[20px]">
+                |
+            </div>
+            <hr class="w-[40%] h-[1px] bg-white border-0">
+        </div>
+
+        <!-- Contact Section -->
+        <div class="flex flex-col items-center text-white mt-5">
+            <h1 class="text-xl">Reach Out & Explore My Work <code>;)</code></h1>
+            <div class="flex justify-center gap-[20%] mt-5 mb-5 h-[100px]">
+                <a id="github-contact" href="#">
+                    <i
+                        class="fab fa-github text-[min(5vw,60px)] transition-all duration-500 ease hover:translate-y-[-10px] hover:text-[min(6vw,70px)]"></i>
+                </a>
+                <a id="linkedin-contact" href="#">
+                    <i
+                        class="fab fa-linkedin text-[min(5vw,60px)] transition-all duration-500 ease hover:translate-y-[-10px] hover:text-[min(6vw,70px)]"></i>
+                </a>
+                <a id="email-contact" href="#">
+                    <i
+                        class="fas fa-envelope text-[min(5vw,60px)] transition-all duration-500 ease hover:translate-y-[-10px] hover:text-[min(6vw,70px)]"></i>
+                </a>
+                <a id="hackerrank-contact" href="#">
+                    <i
+                        class="fab fa-hackerrank text-[min(5vw,60px)] transition-all duration-500 ease hover:translate-y-[-10px] hover:text-[min(6vw,70px)]"></i>
+                </a>
+                <a id="leetcode-contact" href="#">
+                    <i
+                        class="fas fa-code text-[min(5vw,60px)] transition-all duration-500 ease hover:translate-y-[-10px] hover:text-[min(6vw,70px)]"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data injection example
+        // This would be replaced with your actual data injection from the server
+        let userData = {"username":"Subham Kumar","profession":"Full Stack Developer","about_description":"Hey there! 👋 I'm Subham Kumar, a full-stack developer who loves bringing ideas to life through clean code and thoughtful design. I build web applications and mobile apps that people actually enjoy using, tackling everything from seamless user interfaces to robust backend systems.","profile_image":"https://subhamk2004.github.io/Subham_Portfolio/images/skr.png","resume_link":"https://res.cloudinary.com/dpazarvil/raw/upload/v1749908108/assets/ncslutpzhwqavof85alt","linkedin_link":"https://www.linkedin.com/in/subham-kumar-73b98b252","about1_title":" Full-Stack Developer ","about1_content":"\n    Crafting full-stack responsive, user-friendly websites with React, Redux, Typescript, JavaScript, Tailwind, CSS, jQuery, Bootstrap. Proficient in React.js, Redux, Node.js, Express.js, MongoDB for both front-end and back-end development.\n    Developing high-performance mobile applications using React Native, Flutter, Typescript and JavaScript. Proficient in building seamless, cross-platform mobile experiences for both Android and iOS.\n","about2_title":"Education","about2_content":" Pursuing Bachelor of Engineering in Computer Engineering from AIT Pune 2026 with CGPA of 8.32 ","about3_title":"Algorithmic Problem Solver","about3_content":" Enthusiastic participant on platforms like Codeforces, LeetCode, and HackerRank. More than 300 problems solved on leetcode 1300 Rating on CF, 6 ⭐ on hackerrank in problem solving and algorithms ","about4_title":"Expertise","about4_content":"I specialize in the MERN stack and Next.js for building lightning-fast web applications, plus React Native for crafting smooth mobile experiences. From MongoDB databases to pixel-perfect frontends, I create full-stack solutions that perform beautifully across all platforms.","about5_title":"Contact","about5_content":"Mail me at:  subhamrahar22@gmail.com","about6_title":"","about6_content":"","about7_title":"","about7_content":"","about8_title":"","about8_content":"","about9_title":"","about9_content":"","about10_title":"","about10_content":"","skills_description":"Proficient in Typescript, React.js, Next.js, React Native, Redux, Tailwind CSS, Express.js, Nodes.js, MongoDB, Next.js, HTML, CSS, JavaScript, Python, C++. ","language1":"TypeScript","language2":"C++","language3":"Python","language4":"","language5":"","language6":"","language7":"","language8":"","language9":"","language10":"","frontend1":"React","frontend2":"Next.js","frontend3":"React Native","frontend4":"Tailwind CSS","frontend5":"Redux","frontend6":"Bootstrap","frontend7":"Material UI","frontend8":"","frontend9":"","frontend10":"","backend1":"Node","backend2":"Express","backend3":"MongoDB","backend4":"Socket.io","backend5":"Firebase","backend6":"Appwrite","backend7":"Authentication","backend8":"","backend9":"","backend10":"","tool1":"Linux","tool2":"Github","tool3":"Postman","tool4":"Figma","tool5":"Android Studio","tool6":"","tool7":"","tool8":"","tool9":"","tool10":"","experience1_title":"Frontend Developer ","experience1_company":"Techsnap","experience1_duration":"Feb 2024 - April 2024 ","experience1_description":"At Techsnap, I interned as a frontend developer, building a planner for events and an admin panel for test management. I also redesigned key website pages to improve user experience. ","experience2_title":"React Native Developer","experience2_company":"Amigo","experience2_duration":"Built a comprehensive reply feature similar to WhatsApp's messaging system, enabling users to respond to specific messages seamlessly. Identified and resolved various critical bugs across the application, significantly improving overall app performance and user experience.","experience2_description":"","experience3_title":"","experience3_company":"","experience3_duration":"","experience3_description":"","experience4_title":"","experience4_company":"","experience4_duration":"","experience4_description":"","experience5_title":"","experience5_company":"","experience5_duration":"","experience5_description":"","experience6_title":"","experience6_company":"","experience6_duration":"","experience6_description":"","achievement1_title":"SIH 2024 ","achievement1_issuer":"(MIC) in partnership with AICTE","achievement1_date":"","achievement1_description":"Won the prestigious Smart India Hackathon 2024 after 36 hours of non-stop coding and innovation. Rapidly developed and implemented creative solutions under intense pressure, collaborating with my team to build a winning prototype that stood out among hundreds of competing teams nationwide.","achievement2_title":"","achievement2_issuer":"","achievement2_date":"","achievement2_description":"","achievement3_title":"","achievement3_issuer":"","achievement3_date":"","achievement3_description":"","achievement4_title":"","achievement4_issuer":"","achievement4_date":"","achievement4_description":"","achievement5_title":"","achievement5_issuer":"","achievement5_date":"","achievement5_description":"","achievement6_title":"","achievement6_issuer":"","achievement6_date":"","achievement6_description":"","project1_title":"","project1_description":"","project1_link":"","project1_code_link":"","project1_image":"","project2_title":"","project2_description":"","project2_link":"","project2_code_link":"","project2_image":"","project3_title":"","project3_description":"","project3_link":"","project3_code_link":"","project3_image":"","project4_title":"","project4_description":"","project4_link":"","project4_code_link":"","project4_image":"","project5_title":"","project5_description":"","project5_link":"","project5_code_link":"","project5_image":"","project6_title":"","project6_description":"","project6_link":"","project6_code_link":"","project6_image":"","github_link":"","email_link":"","hackerrank_link":"","leetcode_link":""};
+
+
+        // const userData = {
+        //     // Basic Info
+        //     username: "Alex Johnson",
+        //     profession: "Full Stack Developer",
+        //     about_description: "Passionate developer specializing in React and Node.js with experience building scalable applications for startups and enterprises. I love turning ideas into reality through clean code and intuitive user experiences.",
+        //     profile_image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
+        //     background_image: "https://res.cloudinary.com/dpazarvil/image/upload/v1749976572/assets/m3xfzphyturclfyifspu.jpg",
+
+        //     resume_link: "#",
+        //     linkedin_link: "https://linkedin.com",
+
+        //     // About Sections
+        //     about1_title: "Full-Stack Developer",
+        //     about1_content: "Crafting full-stack responsive, user-friendly websites with React, Redux, Typescript, JavaScript, Tailwind, CSS. Proficient in React.js, Redux, Node.js, Express.js, MongoDB for both front-end and back-end development.",
+
+        //     about2_title: "Competitive Programmer",
+        //     about2_content: "Enthusiastic participant on platforms like Codeforces, LeetCode, and HackerRank. 1300 Rating on CF, 6 ⭐ on HackerRank in problem solving and algorithms.",
+
+        //     // Skills Description
+        //     skills_description: "Proficient in JavaScript, TypeScript, React.js, React Native, Redux, Tailwind CSS, Express.js, Node.js, MongoDB, Next.js, HTML, CSS. Quick learner and collaborative team player with strong problem-solving skills.",
+
+        //     // Languages
+        //     language1: "JavaScript",
+        //     language2: "TypeScript",
+        //     language3: "Python",
+        //     language4: "C++",
+        //     language5: "Java",
+
+        //     // Frontend
+        //     frontend1: "React",
+        //     frontend2: "React Native",
+        //     frontend3: "Tailwind CSS",
+        //     frontend4: "Bootstrap",
+        //     frontend5: "Redux",
+        //     frontend6: "Next.js",
+
+        //     // Backend
+        //     backend1: "Node.js",
+        //     backend2: "Express",
+        //     backend3: "MongoDB",
+        //     backend4: "Firebase",
+        //     backend5: "REST API",
+
+        //     // Tools
+        //     tool1: "Git",
+        //     tool2: "GitHub",
+        //     tool3: "VS Code",
+        //     tool4: "Linux",
+        //     tool5: "Docker",
+        //     tool6: "Postman",
+
+        //     // Experience
+        //     experience1_title: "Frontend Developer",
+        //     experience1_company: "TechCorp Inc.",
+        //     experience1_duration: "Jan 2023 - Present",
+        //     experience1_description: "Developed and maintained React applications with Redux state management. Collaborated with UX designers to implement responsive interfaces.",
+
+        //     experience2_title: "React Native Developer",
+        //     experience2_company: "WebSolutions LLC",
+        //     experience2_duration: "Jun 2021 - Dec 2022",
+        //     experience2_description: "Built cross-platform mobile applications using React Native. Implemented features like push notifications and in-app purchases.",
+
+        //     experience3_title: "Junior Developer",
+        //     experience3_company: "StartUp Ventures",
+        //     experience3_duration: "Mar 2020 - May 2021",
+        //     experience3_description: "Worked on both frontend and backend development. Helped migrate legacy systems to modern frameworks.",
+
+        //     // Achievements
+        //     achievement1_title: "Hackathon Winner",
+        //     achievement1_issuer: "TechFest 2023",
+        //     achievement1_date: "March 2023",
+        //     achievement1_description: "Won first prize in annual coding competition with a real-time collaborative whiteboard app.",
+
+        //     achievement2_title: "Top 5% LeetCode",
+        //     achievement2_issuer: "LeetCode",
+        //     achievement2_date: "2022",
+        //     achievement2_description: "Ranked in top 5% of problem solvers in algorithms and data structures category.",
+
+        //     achievement3_title: "Google Developer Scholarship",
+        //     achievement3_issuer: "Google",
+        //     achievement3_date: "2021",
+        //     achievement3_description: "Selected for Google's developer scholarship program among 10,000+ applicants.",
+
+        //     // Projects
+        //     project1_title: "E-commerce Platform",
+        //     project1_description: "A full-featured online store with payment integration, cart functionality, and admin dashboard.",
+        //     project1_link: "#",
+        //     project1_code_link: "#",
+        //     project1_image: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+
+        //     project2_title: "Task Management App",
+        //     project2_description: "Kanban-style productivity application with real-time updates and drag-and-drop interface.",
+        //     project2_link: "#",
+        //     project2_code_link: "#",
+        //     project2_image: "https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+
+        //     // Contact Links
+        //     github_link: "https://github.com",
+        //     linkedin_link: "https://linkedin.com",
+        //     email_link: "mailto:example@example.com",
+        //     hackerrank_link: "https://hackerrank.com",
+        //     leetcode_link: "https://leetcode.com"
+        // };
+
+        function getSkillIcon(skillTitle) {
+            if (!skillTitle || !skillTitle.trim()) return 'fa-code';
+
+            const lowerTitle = skillTitle.toLowerCase().trim();
+
+            const skillIcons = {
+                'javascript': 'fab fa-js-square',
+                'js': 'fab fa-js-square',
+                'typescript': 'fab fa-js-square',
+                'python': 'fab fa-python',
+                'java': 'fab fa-java',
+                'php': 'fab fa-php',
+                'ruby': 'fas fa-gem',
+                'go': 'fab fa-golang',
+                'golang': 'fab fa-golang',
+                'rust': 'fab fa-rust',
+                'c++': 'fas fa-code',
+                'cpp': 'fas fa-code',
+                'c#': 'fas fa-code',
+                'csharp': 'fas fa-code',
+                'swift': 'fab fa-swift',
+                'kotlin': 'fas fa-code',
+                'html': 'fab fa-html5',
+                'html5': 'fab fa-html5',
+                'css': 'fab fa-css3-alt',
+                'css3': 'fab fa-css3-alt',
+                'sass': 'fab fa-sass',
+                'scss': 'fab fa-sass',
+                'less': 'fab fa-less',
+                'bootstrap': 'fab fa-bootstrap',
+                'tailwind': 'fas fa-wind',
+                'tailwindcss': 'fas fa-wind',
+                'react': 'fab fa-react',
+                'reactjs': 'fab fa-react',
+                'angular': 'fab fa-angular',
+                'angularjs': 'fab fa-angular',
+                'vue': 'fab fa-vuejs',
+                'vuejs': 'fab fa-vuejs',
+                'node': 'fab fa-node-js',
+                'nodejs': 'fab fa-node-js',
+                'node.js': 'fab fa-node-js',
+                'express': 'fab fa-node-js',
+                'expressjs': 'fab fa-node-js',
+                'next': 'fab fa-react',
+                'nextjs': 'fab fa-react',
+                'next.js': 'fab fa-react',
+                'nuxt': 'fab fa-vuejs',
+                'nuxtjs': 'fab fa-vuejs',
+                'gatsby': 'fab fa-react',
+                'mysql': 'fas fa-database',
+                'postgresql': 'fas fa-database',
+                'postgres': 'fas fa-database',
+                'mongodb': 'fas fa-database',
+                'mongo': 'fas fa-database',
+                'sql': 'fas fa-database',
+                'sqlite': 'fas fa-database',
+                'firebase': 'fas fa-fire',
+                'redis': 'fas fa-database',
+                'aws': 'fab fa-aws',
+                'amazon': 'fab fa-aws',
+                'docker': 'fab fa-docker',
+                'kubernetes': 'fas fa-dharmachakra',
+                'k8s': 'fas fa-dharmachakra',
+                'azure': 'fab fa-microsoft',
+                'microsoft': 'fab fa-microsoft',
+                'gcp': 'fab fa-google',
+                'google cloud': 'fab fa-google',
+                'git': 'fab fa-git-alt',
+                'github': 'fab fa-github',
+                'gitlab': 'fab fa-gitlab',
+                'bitbucket': 'fab fa-bitbucket',
+                'jenkins': 'fas fa-tools',
+                'terraform': 'fas fa-tools',
+                'react native': 'fab fa-react',
+                'flutter': 'fas fa-mobile-alt',
+                'android': 'fab fa-android',
+                'ios': 'fab fa-apple',
+                'figma': 'fab fa-figma',
+                'sketch': 'fab fa-sketch',
+                'photoshop': 'fas fa-image',
+                'illustrator': 'fas fa-palette',
+                'xd': 'fas fa-vector-square',
+                'ui': 'fas fa-paint-brush',
+                'ux': 'fas fa-user-friends',
+                'design': 'fas fa-paint-brush',
+                'linux': 'fab fa-linux',
+                'ubuntu': 'fab fa-ubuntu',
+                'windows': 'fab fa-windows',
+                'bash': 'fas fa-terminal',
+                'shell': 'fas fa-terminal',
+                'powershell': 'fas fa-terminal',
+                'vim': 'fas fa-terminal',
+                'vscode': 'fas fa-code',
+                'visual studio': 'fas fa-code',
+                'webpack': 'fas fa-cube',
+                'npm': 'fab fa-npm',
+                'yarn': 'fab fa-yarn',
+                'jest': 'fas fa-vial',
+                'testing': 'fas fa-vial',
+                'graphql': 'fas fa-project-diagram',
+                'api': 'fas fa-plug',
+                'rest': 'fas fa-exchange-alt',
+                'json': 'fas fa-file-code',
+                'xml': 'fas fa-code',
+                'laravel': 'fab fa-laravel',
+                'django': 'fas fa-python',
+                'flask': 'fas fa-python',
+                'spring': 'fas fa-leaf',
+                'maven': 'fas fa-tools',
+                'gradle': 'fas fa-tools'
+            };
+
+            if (skillIcons[lowerTitle]) {
+                return skillIcons[lowerTitle];
+            }
+
+            for (const [keyword, icon] of Object.entries(skillIcons)) {
+                if (lowerTitle.includes(keyword) || keyword.includes(lowerTitle)) {
+                    return icon;
+                }
+            }
+
+            return 'fas fa-code';
+        }
+
+        function injectData(data) {
+            if (!data) return;
+
+            // Basic Info
+            document.title = `${data.username} | ${data.profession}`;
+            document.getElementById("username").textContent = data.username;
+            document.getElementById("profession").textContent = data.profession;
+            document.getElementById("about-description").textContent = data.about_description || "Your about description goes here.";
+            document.getElementById("skills-description").textContent = data.skills_description || "Your skills description goes here.";
+
+            // Images
+            if (data.profile_image) {
+                document.getElementById("profile-image").src = data.profile_image;
+            }
+            if (data.background_image) {
+                document.getElementById("background-image").src = data.background_image;
+            }
+
+            // Links
+            document.getElementById("resume-link").href = data.resume_link || "#";
+            document.getElementById("linkedin-link").href = data.linkedin_link || "#";
+
+            // About Sections
+            const aboutBoxesContainer = document.getElementById("about-boxes-container");
+            aboutBoxesContainer.innerHTML = "";
+
+            for (let i = 1; i <= 10; i++) {
+                const title = data[`about${i}_title`];
+                const content = data[`about${i}_content`];
+
+                if (title && content) {
+                    const aboutBox = document.createElement("div");
+                    aboutBox.className = "w-[min(50vw,1000px)] mt-7 flex justify-center items-center text-white gap-[10px]";
+                    aboutBox.innerHTML = `
+                        <div class="bg-[rgba(185,255,22,0.226)] w-[30px] h-[30px] rounded-full flex justify-center items-center animate-flash">
+                            <div class="w-[10px] h-[10px] rounded-full bg-accent-green"></div>
+                        </div>
+                        <div class="about-content-expand w-[min(90%,600px)] bg-about-content-bg h-[min(4vw,60px)] flex text-[min(1.7vw,20px)] rounded-lg flex-col justify-center items-center relative cursor-pointer transition-all duration-[0.4s] ease-in-out overflow-hidden">
+                            <i class="${getSkillIcon(title)} about-imgs text-[min(2vw,50px)] invisible h-0 opacity-0 transition-all duration-700 ease-in-out"></i>
+                            ${title}
+                            <i class="fas fa-chevron-down dropdown absolute w-[30px] mr-[15px] right-0 text-lg"></i>
+                            <p class="about-content-para invisible h-0 opacity-0 transition-all duration-700 ease-in-out overflow-x-hidden overflow-y-scroll">
+                                ${content}
+                            </p>
+                        </div>
+                    `;
+                    aboutBoxesContainer.appendChild(aboutBox);
+                }
+            }
+
+            // Skills - Languages
+            const languagesContainer = document.getElementById("languages-container");
+            languagesContainer.innerHTML = "";
+
+            for (let i = 1; i <= 10; i++) {
+                const skill = data[`language${i}`];
+                if (skill) {
+                    const iconClass = getSkillIcon(skill);
+                    const skillElement = document.createElement("div");
+                    skillElement.className = "w-[100px] p-2 h-auto bg-outer-box-bg shadow-[3px_3px_5px_rgb(16,20,14)] rounded-2xl flex flex-col justify-center items-center transition-all duration-500 ease hover:p-3";
+                    skillElement.innerHTML = `
+                        <i class="${iconClass} text-[min(3vw,50px)]"></i>
+                        <span class="text-xs mt-1">${skill}</span>
+                    `;
+                    languagesContainer.appendChild(skillElement);
+                }
+            }
+
+            // Skills - Frontend
+            const frontendContainer = document.getElementById("frontend-container");
+            frontendContainer.innerHTML = "";
+
+            for (let i = 1; i <= 10; i++) {
+                const skill = data[`frontend${i}`];
+                if (skill) {
+                    const iconClass = getSkillIcon(skill);
+                    const skillElement = document.createElement("div");
+                    skillElement.className = "w-[100px] p-2 h-auto bg-outer-box-bg shadow-[3px_3px_5px_rgb(16,20,14)] rounded-2xl flex flex-col justify-center items-center transition-all duration-500 ease hover:p-3";
+                    skillElement.innerHTML = `
+                        <i class="${iconClass} text-[min(3vw,50px)]"></i>
+                        <span class="text-xs mt-1">${skill}</span>
+                    `;
+                    frontendContainer.appendChild(skillElement);
+                }
+            }
+
+            // Skills - Backend
+            const backendContainer = document.getElementById("backend-container");
+            backendContainer.innerHTML = "";
+
+            for (let i = 1; i <= 10; i++) {
+                const skill = data[`backend${i}`];
+                if (skill) {
+                    const iconClass = getSkillIcon(skill);
+                    const skillElement = document.createElement("div");
+                    skillElement.className = "w-[100px] p-2 h-auto bg-outer-box-bg shadow-[3px_3px_5px_rgb(16,20,14)] rounded-2xl flex flex-col justify-center items-center transition-all duration-500 ease hover:p-3";
+                    skillElement.innerHTML = `
+                        <i class="${iconClass} text-[min(3vw,50px)]"></i>
+                        <span class="text-xs mt-1">${skill}</span>
+                    `;
+                    backendContainer.appendChild(skillElement);
+                }
+            }
+
+            // Skills - Tools
+            const toolsContainer = document.getElementById("tools-container");
+            toolsContainer.innerHTML = "";
+
+            for (let i = 1; i <= 10; i++) {
+                const skill = data[`tool${i}`];
+                if (skill) {
+                    const iconClass = getSkillIcon(skill);
+                    const skillElement = document.createElement("div");
+                    skillElement.className = "w-[100px] p-2 h-auto bg-outer-box-bg shadow-[3px_3px_5px_rgb(16,20,14)] rounded-2xl flex flex-col justify-center items-center transition-all duration-500 ease hover:p-3";
+                    skillElement.innerHTML = `
+                        <i class="${iconClass} text-[min(3vw,50px)]"></i>
+                        <span class="text-xs mt-1">${skill}</span>
+                    `;
+                    toolsContainer.appendChild(skillElement);
+                }
+            }
+
+
+            // Experience
+            const experienceContainer = document.getElementById("experience-container");
+            experienceContainer.innerHTML = "";
+
+            for (let i = 1; i <= 6; i++) {
+                const title = data[`experience${i}_title`];
+                const company = data[`experience${i}_company`];
+                const duration = data[`experience${i}_duration`];
+                const description = data[`experience${i}_description`];
+
+                if (title && company) {
+                    const experienceElement = document.createElement("div");
+                    experienceElement.className = "bg-experience-bg p-6 rounded-xl border-l-4 border-blue-accent hover:shadow-lg hover:shadow-blue-accent/20 transition-all";
+                    experienceElement.innerHTML = `
+            <div class="flex items-start gap-3">
+                <div class="bg-blue-accent/20 p-3 rounded-lg">
+                    <i class="fas fa-briefcase text-blue-accent text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold">${title}</h3>
+                    <p class="text-blue-accent font-medium">${company}</p>
+                    <p class="text-gray-400 text-sm mt-1">${duration || ''}</p>
+                    <p class="text-gray-300 mt-3">${description || ''}</p>
+                </div>
+            </div>
+        `;
+                    experienceContainer.appendChild(experienceElement);
+                }
+            }
+
+            // Achievements
+            const achievementsContainer = document.getElementById("achievements-container");
+            achievementsContainer.innerHTML = "";
+
+            for (let i = 1; i <= 6; i++) {
+                const title = data[`achievement${i}_title`];
+                const issuer = data[`achievement${i}_issuer`];
+                const date = data[`achievement${i}_date`];
+                const description = data[`achievement${i}_description`];
+
+                if (title) {
+                    const achievementElement = document.createElement("div");
+                    achievementElement.className = "bg-achievement-bg p-6 rounded-xl border-l-4 border-accent-green hover:shadow-lg hover:shadow-accent-green/20 transition-all";
+                    achievementElement.innerHTML = `
+            <div class="flex items-start gap-3">
+                <div class="bg-accent-green/20 p-3 rounded-lg">
+                    <i class="fas fa-trophy text-accent-green text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold">${title}</h3>
+                    ${issuer ? `<p class="text-accent-green font-medium">${issuer}</p>` : ''}
+                    ${date ? `<p class="text-gray-400 text-sm mt-1">${date}</p>` : ''}
+                    ${description ? `<p class="text-gray-300 mt-3">${description}</p>` : ''}
+                </div>
+            </div>
+        `;
+                    achievementsContainer.appendChild(achievementElement);
+                }
+            }
+
+
+            // Projects
+            // Projects
+            const projectsContainer = document.getElementById("projects-container");
+            projectsContainer.innerHTML = "";
+
+            for (let i = 1; i <= 10; i++) {
+                const title = data[`project${i}_title`];
+                const description = data[`project${i}_description`];
+                const link = data[`project${i}_link`];
+                const codeLink = data[`project${i}_code_link`];
+                const imageUrl = data[`project${i}_image`] || "https://via.placeholder.com/600x400?text=Project+Image";
+
+                if (title) {
+                    const projectElement = document.createElement("div");
+                    projectElement.className = "project-card group relative overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:shadow-accent-green/20";
+                    projectElement.innerHTML = `
+            <div class="relative h-64 overflow-hidden">
+                <img src="${imageUrl}" alt="${title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-dark-bg/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">${title}</h3>
+                    <p class="text-gray-300 mb-4">${description || "Project description goes here."}</p>
+                    <div class="flex gap-4">
+                        <a href="${codeLink || '#'}" class="bg-accent-green text-dark-bg px-4 py-2 rounded-lg font-medium hover:bg-accent-green/80 transition-colors">
+                            <i class="fab fa-github mr-2"></i>Code
+                        </a>
+                        <a href="${link || '#'}" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-external-link-alt mr-2"></i>Live
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-skills-bg p-4">
+                <h3 class="text-lg font-semibold text-white">${title}</h3>
+                <div class="flex justify-between items-center mt-2">
+                    <span class="text-sm text-gray-400">Project ${i}</span>
+                    <div class="flex gap-2">
+                        <a href="${codeLink || '#'}" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="${link || '#'}" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `;
+                    projectsContainer.appendChild(projectElement);
+                }
+            }
+
+            // Contact Links
+            document.getElementById("github-contact").href = data.github_link || "#";
+            document.getElementById("linkedin-contact").href = data.linkedin_link || "#";
+            document.getElementById("email-contact").href = data.email_link ? `mailto:${data.email_link}` : "#";
+            document.getElementById("hackerrank-contact").href = data.hackerrank_link || "#";
+            document.getElementById("leetcode-contact").href = data.leetcode_link || "#";
+        }
+
+        // Initialize with sample data
+        injectData(userData);
+
+        // Animation and interaction scripts
+        document.addEventListener('DOMContentLoaded', function () {
+            // Smooth scrolling for navigation
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    if (this.getAttribute('href') !== '#') {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href').substring(1);
+                        const targetSection = document.getElementById(targetId);
+                        if (targetSection) {
+                            targetSection.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Animate elements when they come into view
+            const animateOnScroll = function () {
+                const elements = document.querySelectorAll('.project-hover');
+
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+
+                    if (elementPosition < windowHeight - 100) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+
+            // Set initial state for animated elements
+            document.querySelectorAll('.project-hover').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease-out';
+            });
+
+            // Run once on load
+            animateOnScroll();
+
+            // Then run on scroll
+            window.addEventListener('scroll', animateOnScroll);
+        });
+    </script>
+</body>
+
+</html>
