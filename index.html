@@ -294,7 +294,7 @@
 
 
         <!-- About Section -->
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col items-center" id="about">
             <!-- Line Break -->
             <div class="flex justify-center items-center w-full mt-[100px] gap-[15px]">
                 <hr class="w-[40%] h-[1px] bg-white border-0">
@@ -995,7 +995,11 @@
                 }
             }
             if (!hasProjects) {
+                // console.log("no projects");
+                
                 document.getElementById("projects").style.display = "none";
+            } else {
+                // console.log("has projects");
             }
 
             // Contact Links
